@@ -6,6 +6,8 @@ orbs:
 
 jobs:
   fossa_analyze:
+    docker:
+      - image: circleci/golang:1
     steps:
       - checkout
       - run:
