@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  stackhawk: stackhawk/stackhawk@1.0.1
   cli: fossa/cli@0.0.3
 
 workflows:
