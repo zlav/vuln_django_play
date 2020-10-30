@@ -2,8 +2,6 @@ version: 2.1
 
 orbs:
   fossa-cli: fossa/cli@0.0.3
-
-
 workflows:
   build-and-scan:
     jobs:
