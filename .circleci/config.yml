@@ -16,11 +16,21 @@ jobs:
             curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
       - run:
           command: /usr/local/bin/fossa analyze --no-ansi
+  fossa_test:
+    docker:
+      - image: circleci/golang:1
+    steps:
+      - checkout
+      - run:
+          command: /usr/local/bin/fossa test --no-ansi
 
 workflows:
   build-and-scan:
     jobs:
       - fossa_analyze
+      - fossa_test:
+          requires:
+            - fossa_analyze
       - stackhawk/hawkscan-local:
           configuration-files: ./stackhawk.yml ./stackhawk-circleci.yml
           docker-network: scan_net
