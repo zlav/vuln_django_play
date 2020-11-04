@@ -3,7 +3,6 @@ version: 2.1
 orbs:
   stackhawk: stackhawk/stackhawk@1.0.1
 
-
 jobs:
   fossa_test:
     docker:
@@ -18,6 +17,14 @@ jobs:
           command: /usr/local/bin/fossa --no-ansi
       - run:
           command: /usr/local/bin/fossa test --no-ansi
+  deploy-application:
+    working_directory: ~/project
+    machine: true
+    steps:
+    - checkout
+    - run:
+        name: Setup Heroku CLI
+        command: chmod +x scripts/setup_herokucli.sh
 
 workflows:
   build-and-scan:
