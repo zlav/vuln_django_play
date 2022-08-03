@@ -31,3 +31,5 @@ jobs:
       
       - name: Snyk
         uses: snyk/actions@0.3.0
+        env:
+          SNYK_TOKEN: 5b366222-bdb7-459c-8b8b-098d46f9b221
